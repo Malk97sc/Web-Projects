@@ -1,0 +1,199 @@
+:root {
+    --bg-dark: #0a0a0a;
+    --blood-dark: #3d0000;
+    --blood-main: #8b0000;
+    --blood-light: #c62828;
+    --blood-bright: #ff1744;
+    --text-main: #e5e5e5;
+    --text-muted: #9a9a9a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at center, #111 0%, #000 70%);
+    font-family: 'Courier New', monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-main);
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 15% 20%, rgba(139, 0, 0, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(139, 0, 0, 0.02) 0%, transparent 40%);
+    animation: ambient-pulse 10s ease-in-out infinite;
+}
+
+@keyframes ambient-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.clock {
+    position: relative;
+    z-index: 2;
+    padding: 2.5rem 4rem;
+    border-radius: 16px;
+    background: rgba(10, 10, 10, 0.92);
+    box-shadow:
+        inset 0 2px 30px rgba(139, 0, 0, 0.1),
+        inset 0 -2px 20px rgba(0, 0, 0, 0.6),
+        0 0 50px rgba(0, 0, 0, 0.9),
+        0 0 80px rgba(139, 0, 0, 0.15);
+    border: 1px solid rgba(139, 0, 0, 0.15);
+}
+
+.clock::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    right: 8%;
+    width: 35px;
+    height: 40px;
+    background: radial-gradient(
+        ellipse at 40% 30%,
+        rgba(139, 0, 0, 0.25) 0%,
+        rgba(74, 0, 0, 0.15) 30%,
+        transparent 60%
+    );
+    border-radius: 60% 40% 50% 50%;
+    filter: blur(3px);
+    transform: rotate(-15deg);
+}
+
+.clock::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 18px;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(139, 0, 0, 0.5) 0%,
+        rgba(74, 0, 0, 0.3) 40%,
+        transparent 70%
+    );
+    filter: blur(8px);
+    animation: pool-pulse 8s ease-in-out infinite;
+}
+
+@keyframes pool-pulse {
+    0%, 100% { opacity: 0.5; width: 85%; }
+    50% { opacity: 0.7; width: 90%; }
+}
+
+.time {
+    font-size: 3.5rem;
+    letter-spacing: 0.15em;
+    text-shadow: 
+        0 0 20px rgba(139, 0, 0, 0.4),
+        0 0 40px rgba(139, 0, 0, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-variant-numeric: tabular-nums;
+    font-weight: bold;
+    color: #fff;
+}
+
+.time span {
+    display: inline-block;
+}
+
+#hours, #minutes, #seconds {
+    min-width: 1.4em;
+    text-align: center;
+}
+
+.separator {
+    opacity: 0.7;
+    color: var(--blood-light);
+    animation: blink 1s infinite;
+    text-shadow: 
+        0 0 15px rgba(198, 40, 40, 0.6),
+        0 0 30px rgba(198, 40, 40, 0.3);
+}
+
+.signature {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    letter-spacing: 0.5em;
+    color: var(--blood-main);
+    opacity: 0.65;
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.4);
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+.separator {
+    animation: blink 1s infinite steps(1);
+}
+
+@keyframes blink {
+    50% { opacity: 0.2; }
+}
+
+
+@keyframes drip-fall {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    40% {
+        height: 80px;
+    }
+
+    70% {
+        height: 120px;
+        opacity: 1;
+    }
+
+    90% {
+        height: 140px;
+        opacity: 0.6;
+    }
+
+    100% {
+        height: 160px;
+        opacity: 0;
+    }
+}
