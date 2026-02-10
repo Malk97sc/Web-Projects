@@ -38,6 +38,14 @@ const projectsData = [
         tags: ['CSS', 'HTML', 'JS'],
         link: 'projects/tempus_mortis/index.html',
         image: 'assets/tempus_mortis.png'
+    },
+    {
+        id: '06',
+        title: 'CV Web',
+        description: 'Curriculum Vitae.',
+        tags: ['CSS', 'HTML', 'JS'],
+        link: 'projects/cv-web/index.html',
+        image: 'assets/cv.png'
     }
 ];
 class PortfolioRenderer {
